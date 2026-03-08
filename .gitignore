@@ -1,0 +1,29 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temp / logs
+*.log
+*.tmp
+*.bak
+__tmp_section.txt
+
+# Future build outputs
+build/
+dist/
+out/
+
+# Python / Node cache if later introduced
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.venv/
+node_modules/
+
+# Local IDE state
+.idea/
+.vscode/
+
+# External source repo: managed independently
+research/openclaw/

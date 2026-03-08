@@ -1,0 +1,351 @@
+# 🦞 OpenClaw 全面机器小红书：从入门到骨灰级外网玩家
+
+基于官方文档 [docs.openclaw.ai](https://docs.openclaw.ai/) 的全局栏目结构，这是一份为你专门定制的“小白也能看懂”的 OpenClaw 全面大典。
+
+文档按官网的 Tab 结构（Channels, Agents, Tools, Models, Gateway）进行了解构，把你那些晦涩难懂的英文模块全部翻译成了中国宝宝体质能懂的大白话图谱。
+
+---
+
+## 🧭 【入门与极客前瞻】What is OpenClaw?
+
+### 它的本质是什么？
+在官方语境里，OpenClaw 是一个**为 Agent（智能体）打造的跨平台多渠道网关系统 (Gateway)**。
+你可以把它理解为你个人电脑上的“AI 中央控制塔”。
+1. **Self-hosted（本地私有化）**：所有聊天文件、核心配置文件全在你的电脑上运行，不传给任何第三方壳子中心。
+2. **Multi-channel（多渠道神分身）**：它能**同时**挂接在全世界几乎所有的主流聊天软件里。只要你在家挂着服务器，在外面用手机微信/飞书，随时都能叫它干活。
+
+---
+
+## 📡 【Channels 模块】你能把它接在哪些聊天软件里？
+
+这是 OpenClaw 最让人兴奋的通信兵能力。官方支持把这个机器人同时**硬绑定**到几十种聊天平台上！
+- **国内常用**：Feishu（飞书）、微信 / Zalo（东南亚）、钉钉（社区适配中）。
+- **外网神器**：WhatsApp（扫码直接登）、Telegram（直接绑 Bot API）、Discord、Slack、Signal。
+- **苹果生态专享**：BlueBubbles / iMessage（如果你是果粉，它可以直接接管你的苹果短信！）。
+
+**小白指南**：你的 [openclaw.json](file:///d:/code/vb/claw/openclaw.json) 里有一个 `channels` 字段。不管你接入多少个平台，**建议一定要配好白名单 (`allowFrom`)**。比如在飞书里，确保它只理你，防止陌生人或者群友调戏你的 AI，耗空你的 Token。
+
+---
+
+## 🤖 【Agents 模块】多重影分身（多智能体路由）
+
+你以为 OpenClaw 只有一个 AI 吗？大错特错！官方极其推崇 **Multi-Agent Routing (多智能体分派)** 架构。
+
+### 为什么你需要好几个代理？
+1. **`main` (大管家/默认接单员)**：
+   这是你的首要工作区（标签 `DEFAULT`）。你在飞书发的所有消息，第一经手人都是它。它掌管着你的 [workspace](file:///d:/code/vb/claw/research/pi-mono/pi-mono.code-workspace) 文件夹，负责日常的对答、读写代码。
+2. **`codex` (硬核工具人/被唤醒系统)**：
+   它没有“性格”（没有设定提示词），它只是一个纯粹的执行机器。当你在飞书里下达“去终端里执行一行命令”的指令时，`main` 会把任务包外包给 `codex` 这个无情的脚本机器去跑，跑完再拿回来汇报给你。
+
+### 怎么召唤更多分身？
+只需要通过命令行：`openclaw agents add social`。
+它就会在 `~/.openclaw/agents/` 下创建一个名为 `social` 的独立文件夹，拥有独立的大脑记忆，你可以把它专门绑在 Telegram 上陪网友摸鱼瞎聊，和飞书里的“工作狂 `main`”井水不犯河水。
+
+---
+
+## 🛠️ 【Tools vs Skills】它的三头六臂（工具箱与技能）
+
+很多小白看到界面上的 [Tools](file:///d:/code/vb/claw/research/pi-mono/packages/agent/src/agent.ts#236-239) (工具)、`Plugins` (插件) 和 [Skills](file:///d:/code/vb/claw/research/openclaw/src/agents/agent-scope.ts#146-152) (技能)，以及最近很火的 `MCP` (模型上下文协议) 容易搞混。其实它们在 OpenClaw 里层次非常清晰：
+
+### 1. Tools（官方原生内置工具）
+这是 OpenClaw 系统**出厂自带的底牌**，你不需要额外安装，只要大模型能力够强就能直接用（通过分发给它的 `group` 权限词管辖）：
+- **底层执行 (`group:runtime`)**：`exec`, `bash`。它能直接在你的 Windows PowerShell 里敲命令！
+- **文件系统 (`group:fs`)**：[read](file:///d:/code/vb/claw/research/openclaw/src/agents/pi-embedded-runner/google.ts#325-343), [write](file:///d:/code/vb/claw/research/pi-mono/packages/coding-agent/src/core/session-manager.ts#765-770), `edit`, `apply_patch`。它能随意读取、修改你电脑里的代码和文档。
+- **网络与 UI (`group:web` & `group:ui`)**：`web_search`, [browser](file:///d:/code/vb/claw/research/openclaw/Dockerfile.sandbox-browser)。如果你没配 API，它会自己在后台静默启动一个浏览器去检索（比如你之前碰到的 DuckDuckGo）。
+- **记忆与会话 (`group:memory` & `group:sessions`)**：管理聊天上下文，搜索过去的数据库。
+
+### 2. Plugins（系统级外挂插件）
+这也是官方用 TypeScript 写的底层集成，用来接入第三方聊天渠道或者深度系统权限：
+- 你目前安装/启用的就是 `feishu` 插件（作为 Channel 接入）。
+
+### 3. Skills（自定义技能扩展包） 🔄 对应 MCP / Claude Code Skill
+**这正是解答你核心疑问的地方！**
+OpenClaw 界面里的 [Skills](file:///d:/code/vb/claw/research/openclaw/src/agents/agent-scope.ts#146-152)（技能）在概念上**完全等同于** Anthropic 最近主推的 `MCP`（Model Context Protocol）工具，或者你在 Claude Code 里写的自定义脚本。
+它是独立的**外部脚本**（通常是 Python / Node.js），你可以随意下载别人写好的轮子，直接装给你的代理用。
+- **能不能自己装？**：**绝对可以！** 官方甚至做了一个类似 App Store 的平台叫 ClawHub。你可以直接在终端通过类似于 `clawhub install xxx` 的命令，一键下载别人写好的股票查询、PDF解析、连数据库等高阶绝活。
+- **装在哪里？**：安装的共享技能会统一存在你本地的 `~/.openclaw/skills` 文件夹里。如果你给特定的代理（Agent）装，就会存在 `~/.openclaw/workspace/skills` 下。
+
+*(目前你的飞书默认助理主要在使用的是系统内置的 Tools 和我们帮它调通的 Codex 命令行，还没有额外安装庞大的第三方 Skills 包。)*
+
+### 4. 工具实战内幕：原理、能力与配置
+
+为了让你从“能用”变成“会修”，我们必须搞清楚这些工具在底层是怎么工作的。
+
+#### 🌐 浏览器工具 (Browser Tool)
+*   **原理**：它不是简单的网页抓取，而是基于 **Playwright** 引擎在后台启动了一个真实的 Chromium 浏览器。它具备完整的 DOM 解析、JS 执行和截图能力。
+*   **能力上限**：支持滚动、点击、表单填写、多标签页切换。甚至可以绕过简单的动态渲染保护。
+*   **如何配置**：
+    *   在 [openclaw.json](file:///d:/code/vb/claw/openclaw.json) 的 `tools.allow` 中加入 `"browser"`。
+    *   **环境变量**：`OPENCLAW_BROWSER_HEADLESS=true` (默认为隐藏)。如果你想看它是怎么动的，可以改为 `false`。
+
+#### 💻 系统工具 (Native Tools: exec/bash)
+*   **原理**：直接将指令发送给你的宿主操作系统（Windows/macOS/Linux）执行。它通过集成的 `runtime` 权限组来运作。
+*   **能力上限**：可以运行 Python 脚本、安装 Node 依赖、管理本地 Git 仓库。
+*   **配置要求**：
+    *   你需要在配置中授予 `group:runtime` 权限。
+    *   **安全提示**：建议在 `commands.nativeSkills` 设置为 `auto`，让它智能判断何时需要直接执行。
+
+#### 💬 飞书专供工具 (Feishu Capabilities)
+*   **原理**：通过飞书开放平台（Lark OpenAPI）的 Token 授权。每一行你在飞书里看到的操作（创表、改文档），都是一次标准的 API 调用。
+*   **能力上限**：精细到多维表格（Bitable）的行级增删改查。
+*   **核心配置 (API Scopes)**：
+    *   **必须要开的权限**：`im:message` (发消息)、`docx:document` (写云文档)、`bitable:app` (操作表格)、`contact:contact:readonly` (认识你是谁)。
+    *   如果你发现它没法改你的云文档，去飞书开发者后台检查对应的 **API 权限范围** 是否已通过审核并发布版本。
+
+#### 🔗 跨平台消息工具 (Message Tool)
+*   **原理**：一个统一的“中间层”，它把不同聊天软件的复杂协议（如 WhatsApp 的长连接、Telegram 的轮询）包装成了统一的交互接口。
+*   **配置**：每个 Channel 都需要独立的配置文件。比如 Feishu 需要 `appId`，而 Telegram 需要 `botToken`。
+
+---
+
+## 🧠 【Models 模块】你可以给它装什么牌子的大脑？
+
+OpenClaw 是“带枪不带脑”的组织。它的大脑完全由你接入（Provider）。
+官方全兼容目前市面上几乎**所有**大语言模型：
+- **第一梯队（富哥专享）**：OpenAI (GPT-4o), Anthropic (Claude-3.5-Sonnet)。
+- **国产之光（接地气高性价比）**：Qwen (通义千问), Moonshot (Kimi), GLM (智谱), MiniMax, 百度千帆。
+- **极客白嫖（我们的现状）**：像你现在这样，劫持本地的 **`openai-codex`** OAuth 长令牌，在不花一毛钱 API 费用的情况下，享受 GPT 级别的工作栈！
+- **本地断网版**：Ollama、vLLM。如果你的电脑显卡（GPU）够强，你可以下个本地模型。拔了网线它照样能帮你写代码。
+
+---
+
+## 🎛️ 【Gateway & Ops】中央调度室与救命手段
+
+Gateway（网关）就是一直维持在这个黑框框里跑着的服务。
+- **可视化控制台**：就是你截图里的 `http://127.0.0.1:18789/`。嫌改 JSON 文件太反人类？直接在这里点鼠标就能换大模型、关插件、看聊天账单。
+- **诊断医生 (`openclaw doctor`)**：如果你哪天不小心把配置文件写错了，网关死活启动不起来，别慌。敲下 `openclaw doctor --fix`，系统底层会带自动纠错机制帮你重写正确的括号和缩进。
+- **热更新与状态**：想看它运行好不好，用 `openclaw status` 或 `openclaw channels status --probe`，它会告诉你飞书是不是还在线，连没连得上。
+
+---
+
+---
+
+## 🏗️ 【Architecture & Internal】底层架构与运行内幕
+
+为了让你从“会用”变成“懂行”，我们必须拆开 OpenClaw 的外壳，看看它的内脏是怎么协作的。
+
+### 1. 🫀 Gateway (网关层)：系统的“心脏”
+所有的消息（飞书、WhatsApp、网页）首先都会汇总到 **Gateway**。
+- **排队机制**：如果你同时在飞书里下了好几个任务，Gateway 会让它们在后台排队（Queueing），保证你的助手不会因为脑容量爆炸而产生逻辑混乱。
+- **权力中枢**：所有的工具调用权限、配置文件的读取，都是由这个一直跳动的“心脏”统一管理的。
+
+### 2. 🦾 Nodes & Clients (节点与客户端)：助手的“手脚”
+- **Nodes (节点)**：你可以把你的手机、另一台 Mac 甚至是一步 Android 手机变成 OpenClaw 的一个节点。这样你的助手就能用你的手机摄像头拍照（`camera_snap`）或定位。
+- **Clients (客户端)**：你在网页浏览器里看到的那个 Dashboard 就是一个客户端，它通过 WebSocket 长连接实时“偷听”心脏的跳动。
+
+### 3. 🧠 Agent Runtime & Loop (运行环境与灵体循环)
+当你发一条消息，助手的脑回路（Agent Loop）是这样转的：
+1. **接单 (Entry Point)**：Gateway 收到飞书消息。
+2. **准备 (Preparation)**：助手打开你的 [workspace](file:///d:/code/vb/claw/research/pi-mono/pi-mono.code-workspace)，加载你的 [Skills](file:///d:/code/vb/claw/research/openclaw/src/agents/agent-scope.ts#146-152) 和 [SOUL.md](file:///C:/Users/levimin/.openclaw/workspace/SOUL.md)。
+3. **思考与执行 (Evaluation)**：模型（如 GPT-5）决定是直接回话，还是调用 [browser](file:///d:/code/vb/claw/research/openclaw/Dockerfile.sandbox-browser) 或 `exec` 工具。
+4. **代谢 (Compaction)**：如果对话太长，它会进行“代谢压缩”，总结重点，腾出 Token 空间。
+
+### 📂 【Workspace Deep-Dive】实战分析：你部署的这几个文件到底在干啥？
+
+刚才我钻进你电脑的 `C:\Users\levimin\.openclaw\workspace` 看了看，发现这四个文件现在就像是**一张刚出生还没填写的“出生证明”**。
+
+以下是根据你当前本地文件的实际内容所做的“白话解读”：
+
+1. **🕯️ [SOUL.md](file:///C:/Users/levimin/.openclaw/workspace/SOUL.md) (灵魂宪法)**
+   * **现状**：它写满了“不要做传声筒”、“要有主见”、“要尊重隐私”。
+   * **解读**：这是你的 AI 助理的**底层价值观**。它目前被设定为：**简洁、直接、不讲废话**。如果你发现它最近老是说“很高兴能帮到你”之类的客套废话，你可以通过改这个文件“修理”它的灵魂。
+
+2. **🆔 [IDENTITY.md](file:///C:/Users/levimin/.openclaw/workspace/IDENTITY.md) (身份名片)**
+   * **现状**：目前全是下划线，等着去填（pick something you like）。
+   * **解读**：你的代理目前还没有名字！它还在等你去给它起个外号、选个 Emoji、设定一个形象。
+
+3. **🧠 [AGENTS.md](file:///d:/code/vb/claw/research/pi-mono/AGENTS.md) (运行规章与长期记忆)**
+   * **现状**：它是最长的一个文件（200多行），规定了它每天睡醒要看哪些文件。
+   * **解读**：这是它的**“操作手册”**。它明确规定了：**没用的废话不要记，重要的决定必须写进文件**。这就是它不会“断片”的秘密。
+
+4. **👤 [USER.md](file:///C:/Users/levimin/.openclaw/workspace/USER.md) (关于你的秘密)**
+   * **现状**：目前也是空白模版。
+   * **解读**：这是它对你的**私人印象笔记**。如果有一天它知道你喝咖啡不加糖、知道你是几点下班，它会偷偷记在这里，下次自动参考。
+
+---
+
+---
+
+## 🧠 【Prompt & Context】助手的“出厂设置”与“临时记忆”
+
+很多小白会问：为什么 AI 知道怎么用我的浏览器？为什么它能记得刚才发过的图片？这全靠 **System Prompt（系统提示词）** 和 **Context（上下文）** 这两套机制。
+
+### 1. 📋 System Prompt：助手的“开机说明书”
+每次你跟助手说话，OpenClaw 都会在后台瞬间拼凑出一份长达几千字的指令发给模型。
+- **它包含了啥？**：
+    - **工具表**：告诉 AI 它有权调用浏览器、文件读写等工具。
+    - **安全卫士**：警告 AI 不许背着主人乱干坏事。
+    - **你的灵魂文件**：实时读取你的 [SOUL.md](file:///C:/Users/levimin/.openclaw/workspace/SOUL.md) 和 [IDENTITY.md](file:///C:/Users/levimin/.openclaw/workspace/IDENTITY.md)（见上文）。
+    - **当前时空**：告诉它现在是几点、在哪台电脑上运行。
+- **小白妙招**：如果你觉得助手变傻了，可以用指令 `/context list` 看看它当前脑子里到底装了哪些指令。
+
+### 2. 🗄️ Context：助手的“缓存记忆”
+上下文就像是助手的“临时存储区”。
+- **它存了啥？**：你们的聊天历史、它截的图、以及你发给它的文档。
+- **为什么它不会撑爆？**：
+    - **Compaction (压缩)**：当你们聊得太深，模型装不下时，OpenClaw 会自动把旧的对话总结成一段话，腾出位置放新内容。
+    - **Pruning (修剪)**：它会偷偷删掉那些没用的技术报错信息，只留下核心结论。
+- **省钱黑科技**：OpenClaw 会标记哪些记忆是“重复”的。对于重复的记忆（Cached Tokens），它的费用比新消息要便宜得多（这就是为什么你控制台里蓝色柱子特别多的原因）。
+
+---
+
+> 🚀 **总结：**
+> **System Prompt** 决定了它**能做什么**（规矩）；
+> **Context** 决定了它**记得什么**（记忆）。
+---
+
+## 🧠 【Model Switch】如何给助手换个“更强”的大脑？
+
+你刚才配置了智谱（Zhipu/GLM），想要正式启用它，其实只需要在配置文件里简单改一行。
+
+### 1. 检查当前用的是谁
+在飞书里直接给助手发送：
+> `/context list`
+
+或者直接问它：
+> “你现在使用的是什么模型？”
+
+如果返回的结果里包含 `zai/glm-4.7` 这种字样，说明它已经在用智谱干活了。
+
+### 2. 手动切换大脑 (修改 openclaw.json)
+如果你想在 **OpenAI Codex** 和 **智谱 GLM** 之间反复横跳，找到你的 `C:\Users\你的用户名\.openclaw\openclaw.json`：
+
+*   **切换到智谱 (Zhipu)**:
+    ```json
+    "model": {
+      "primary": "zai/glm-4.7"
+    }
+    ```
+*   **切换回 Codex**:
+    ```json
+    "model": {
+      "primary": "openai-codex/gpt-5.3-codex"
+    }
+    ```
+
+### 3. 配置文件的“潜规则”
+- **修改完不用重启吗？**：在大多数情况下，你修改完 [openclaw.json](file:///d:/code/vb/claw/openclaw.json) 并保存，OpenClaw 的网关服务（Gateway）会感应到变化并自动重载模型。如果不放心，可以敲一下 `openclaw gateway restart`。
+- **Provider 前缀**：记住一定要带上前缀。智谱是 `zai/`，Codex 是 `openai-codex/`。
+
+---
+
+> 🚀 **总结：**
+> 修改 [openclaw.json](file:///d:/code/vb/claw/openclaw.json) 里的 `primary` 字段就是换脑手术的全部。
+> **智谱 (Zhipu)** 擅长中文语境和长文本分析；**Codex** 擅长硬核代码执行。
+> 建议你根据当天的任务性质灵活切换！🦞
+
+---
+
+## 🎭 【Chapter 19 (进阶)】OpenAI Codex OAuth 深度揭秘与“双模型双待”配置
+
+你在实战中提到的几个高阶疑问：Codex OAuth 是不是有诸多限制？如何让 GPT-5.2 管聊天，让智谱管记忆（Embeddings）？接下来为你硬核剖析。
+
+### 1. Codex OAuth 的“紧箍咒” (合规与工具限制)
+通过 OAuth 白嫖 Codex 的 GPT 模型确实极具性价比，但这并非没有代价。从 OpenClaw 源码级别扒出来的真相揭示了它的局限性：
+
+*   **无法使用内置 Tools (工具剥夺)**：
+    OpenClaw 在源码底层为 Codex OAuth 分配了专有的协议类型 `openai-codex-responses`。在这个协议的定义中，为了保持与 Codex CLI 原生网页端对话行为一致（并躲避 OpenAI 复杂的风控检测），**系统会主动移除所有工具调用请求 (Tools)**。
+    *也就是：你在配置了 Codex OAuth 后，助手将无法帮你直接运行脚本、写文件或搜网页，它退化成了一个纯粹的“打字机”。*
+*   **合规风险 (ToS Violation)**：
+    这属于 Client ID 伪造 (Spoofing) 越权调用，OpenAI 完全可以在服务器端轻易阻断这种连接（正如它时不时会让你的 Refresh Token 失效一样）。
+    *作为对比，Claude Code 就聪明地绕开了 OAuth，要求用户手动提取 `setup-token` 来避免被精准封控。*
+*   **无法使用 Embeddings (向量记忆缺失)**：
+    Codex OAuth 给到的权限 Token **只允许调用聊天接口 (Chat/Completions)**，根本就没有给向量接口 (Embeddings) 权限。这就导致你没法使用需要向量数据库支持的长记忆搜索和匹配能力。
+
+### 2. 模型选型与“思考深度” (Reasoning Depth)
+好消息是，Codex 支持的优质模型，在 OpenClaw 中均可通过别名映射启用：
+*   **理论可用模型**：凡是在官方 Codex 网页版和 CLI 里能选的（目前主要为 `gpt-5.3-codex` 或相关衍生版），在 OpenClaw 均可通过配置使用。如果输入了错误的缩写，OpenClaw 底层的 [resolveModel](file:///d:/code/vb/claw/research/openclaw/src/agents/pi-embedded-runner/model.ts#42-128) 也会尽力帮你匹配到相近的变体。
+*   **思考深度配置 (Thinking/Reasoning Level)**：
+    完全等同于你看到的 Codex CLI 选项！你可以直接在 [openclaw.json](file:///d:/code/vb/claw/openclaw.json) 里配置它的**思考深度**（低、中、高等级别）。
+    只需要在 `agents.defaults` 对象中添加 `thinkingDefault` 属性：
+    ```json
+    {
+      "agents": {
+        "defaults": {
+          "model": {
+            "primary": "openai-codex/gpt-5.3-codex"
+          },
+          "thinkingDefault": "high"  // 可选值："off", "minimal", "low", "medium", "high", "xhigh"
+        }
+      }
+    }
+    ```
+    配置完成后，如果是飞书这类聊天端，某些情况下中间的“思考过程”（`<think>...`）会平滑地流式展示出来。如果想临时改写某次对话的深度，可以在飞书里发特定斜杠指令（例如 `/think high`）来当场变更！
+
+### 3. “双模型双待”：GPT-5.2 负责聊天，智谱 (Zhipu) 负责记忆
+这是你提出来的绝妙架构，**完全可行！** 此方案能完美弥补 Codex OAuth 没有 Embeddings 的缺陷。
+
+既然 Codex 无法处理长久记忆，我们就把这部分外包给你的智谱 Codingplan。
+
+#### 配置实操 (修改 [openclaw.json](file:///d:/code/vb/claw/openclaw.json))
+你需要在配置文件的 `agents.defaults` 中，为 `memorySearch` 单独指定 Embeddings 服务提供商，并将其指向智谱的 API。
+
+```json
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openai-codex/gpt-5.2-codex"  // 主聊天大脑：使用 Codex 薅羊毛
+      },
+      "memorySearch": {
+        "provider": "openai",                    // 智谱兼容 OpenAI 格式
+        "model": "embedding-3",                  // 填入智谱的向量模型名
+        "remote": {
+          "baseUrl": "https://open.bigmodel.cn/api/paas/v4/embeddings", // 智谱的向量专属路由
+          "apiKey": "你的智谱API_KEY"
+        },
+        "fallback": "local"                      // 万一智谱挂了，还能降级到本地模型
+      }
+    }
+  }
+}
+```
+**配置解析**：
+*   **`model.primary`**：日常聊天的入口，跑的是 Codex 薅来的羊毛。
+*   **`memorySearch.remote.baseUrl`**：关键魔法。由于 OpenClaw 不认识第三方国内云商的专属网址，你需要**显式地**在这里告诉它去找智谱，而不是傻傻地跑去 OpenAI 官网。
+
+这样操作后，你同时拥有了 GPT-5.2 的聪明才智，又利用智谱解决了大容量记忆数据库的问题！🦀
+
+---
+
+## 👥 【Chapter 20 (底层揭秘)】模型 (`model.primary`) 与 智能体 ([Agent](file:///d:/code/vb/claw/research/pi-mono/packages/agent/src/agent.ts#96-560)) 是什么关系？
+
+正如你敏锐察觉到的，OpenClaw 是一个**完全以智能体 (Agent) 为核心**的框架。这意味着它的大脑（模型）其实是**“寄生”**在各个不同的智能体身上的。
+
+通过查阅底层源码 [src/agents/agent-scope.ts](file:///d:/code/vb/claw/research/openclaw/src/agents/agent-scope.ts) 中的 [resolveAgentEffectiveModelPrimary](file:///d:/code/vb/claw/research/openclaw/src/agents/agent-scope.ts#177-186) 机制，这层关系可以归纳为两句话：
+
+### 1. 为什么配置都在 `agents.defaults` 里？
+在大部分小白的 [openclaw.json](file:///d:/code/vb/claw/openclaw.json) 里，只有这一个地方配了模型：
+`agents` -> `defaults` -> [model](file:///d:/code/vb/claw/research/openclaw/src/agents/model-selection.ts#36-39) -> `primary`
+
+这个 `defaults` 的本质是：**“当且仅当一个智能体没有自己专属的大脑时，系统默认分发给它的公共大脑”**。
+因为系统出厂时会默认给你分配一个叫做 `main`（大管家）的隐形智能体，而这个主助理没有写死任何独立模型，所以它就顺理成章地继承了 `agents.defaults` 里的 `primary` 模型。
+
+### 2. 局部覆写 (Override)：给特定智能体换上自己的脑子
+这也是 OpenClaw 发挥终极威力的地方：**模型是可以按 Agent 定制的！**
+如果我们在终端敲指令 `openclaw agents add coder` 创建了一个专职写代码的新助手，并且你想让它独立使用 Claude 3.5 敲代码，你完全可以在 [openclaw.json](file:///d:/code/vb/claw/openclaw.json) 的 **`agents.list`** 里单独为它“上脑”：
+
+```json
+{
+  "agents": {
+    "list": [
+      {
+        "id": "coder",                   // 这个 Agent 的名字
+        "model": {
+          "primary": "anthropic/claude-3-5-sonnet-20241022"  // 给它专用的模型！不吃大锅饭
+        }
+      }
+    ],
+    "defaults": {
+      "model": {
+        "primary": "openai-codex/gpt-5.3-codex"  // 没设定模型的主力助手 (main) 用的公共脑
+      }
+    }
+  }
+}
+```
+
+**总结**：
+*   `agents.list[...].model` 是小灶（最高优先级）。
+*   `agents.defaults.model` 是大锅饭（兜底模型）。
+*   所有的模型选择，在源码里最终都会穿透并绑定到某一个具体的 Agent ID 上去执行。
