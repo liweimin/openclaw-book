@@ -34,3 +34,15 @@
 - 记忆与检索策略迭代
 
 等验证稳定后，会再提炼回正式案例章节。
+
+### 2. 行业研究助手
+
+入口在：
+
+- [industry-research-assistant/README.md](industry-research-assistant/README.md)
+
+这条线现在还是较早期的实验：
+
+- 已有最小 Skill
+- 已有检索与配置说明
+- 后面还会继续补蓝图、验证手册和测试记录

@@ -134,10 +134,11 @@ Gateway 是中枢。
 
 ## 核验依据
 
-- 官方源码 README：`research/openclaw/README.md`
-- 官方入门文档：`research/openclaw/docs/zh-CN/start/getting-started.md`
-- 官方架构文档：`research/openclaw/docs/concepts/architecture.md`
+- 官方源码 README：`sources/official/openclaw/README.md`
+- 官方入门文档：`sources/official/openclaw/docs/zh-CN/start/getting-started.md`
+- 官方架构文档：`sources/official/openclaw/docs/concepts/architecture.md`
 - 源码入口：
-  - `research/openclaw/package.json`
-  - `research/openclaw/src/commands/dashboard.ts`
-  - `research/openclaw/src/gateway/server.impl.ts`
+  - `sources/official/openclaw/package.json`
+  - `sources/official/openclaw/src/commands/dashboard.ts`
+  - `sources/official/openclaw/src/gateway/server.impl.ts`
+

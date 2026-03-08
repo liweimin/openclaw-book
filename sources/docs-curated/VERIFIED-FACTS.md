@@ -5,7 +5,7 @@
 核验基线：
 
 - 官方 GitHub 仓库：`https://github.com/openclaw/openclaw`
-- 本地源码快照：`research/openclaw`
+- 本地源码快照：`sources/official/openclaw`
 - 当前克隆提交：`bfc36cc`
 - 官网：`https://openclaw.ai`
 - 官方文档站：`https://docs.openclaw.ai`
@@ -19,9 +19,9 @@
 
 依据：
 
-- [官方 README（本地源码）](../research/openclaw/README.md)
-- [官方 Windows 文档（本地英文）](../research/openclaw/docs/platforms/windows.md)
-- [官方 Windows 文档（本地中文）](../research/openclaw/docs/zh-CN/platforms/windows.md)
+- [官方 README（本地源码）](../official/openclaw/README.md)
+- [官方 Windows 文档（本地英文）](../official/openclaw/docs/platforms/windows.md)
+- [官方 Windows 文档（本地中文）](../official/openclaw/docs/zh-CN/platforms/windows.md)
 - [官网 Windows 页](https://docs.openclaw.ai/platforms/windows)
 
 对当前根目录文档的影响：
@@ -37,9 +37,9 @@
 
 依据：
 
-- `research/openclaw/package.json:414`
-- [官方入门指南（本地英文）](../research/openclaw/docs/start/getting-started.md)
-- [官方入门指南（本地中文）](../research/openclaw/docs/zh-CN/start/getting-started.md)
+- `sources/official/openclaw/package.json:414`
+- [官方入门指南（本地英文）](../official/openclaw/docs/start/getting-started.md)
+- [官方入门指南（本地中文）](../official/openclaw/docs/zh-CN/start/getting-started.md)
 
 对当前根目录文档的影响：
 
@@ -54,9 +54,9 @@
 
 依据：
 
-- `research/openclaw/scripts/install.ps1:5-11`
-- [官方安装器说明（本地英文）](../research/openclaw/docs/install/installer.md)
-- [官方安装器说明（本地中文）](../research/openclaw/docs/zh-CN/install/installer.md)
+- `sources/official/openclaw/scripts/install.ps1:5-11`
+- [官方安装器说明（本地英文）](../official/openclaw/docs/install/installer.md)
+- [官方安装器说明（本地中文）](../official/openclaw/docs/zh-CN/install/installer.md)
 - [官网安装器说明页](https://docs.openclaw.ai/install/installer)
 
 对当前根目录文档的影响：
@@ -71,10 +71,10 @@
 
 依据：
 
-- [官方 README（本地源码）](../research/openclaw/README.md)
-- [官方入门指南（本地英文）](../research/openclaw/docs/start/getting-started.md)
-- [官方 onboard 命令文档（本地英文）](../research/openclaw/docs/cli/onboard.md)
-- [官方 onboard 命令文档（本地中文）](../research/openclaw/docs/zh-CN/cli/onboard.md)
+- [官方 README（本地源码）](../official/openclaw/README.md)
+- [官方入门指南（本地英文）](../official/openclaw/docs/start/getting-started.md)
+- [官方 onboard 命令文档（本地英文）](../official/openclaw/docs/cli/onboard.md)
+- [官方 onboard 命令文档（本地中文）](../official/openclaw/docs/zh-CN/cli/onboard.md)
 - [官网 onboard 参考页](https://docs.openclaw.ai/cli/onboard)
 
 ## 5. 最快的第一条聊天路径确实是 `openclaw dashboard`
@@ -86,10 +86,10 @@
 
 依据：
 
-- [官方入门指南（本地英文）](../research/openclaw/docs/start/getting-started.md)
-- [官方 dashboard 命令文档（本地英文）](../research/openclaw/docs/cli/dashboard.md)
-- [官方 dashboard 命令文档（本地中文）](../research/openclaw/docs/zh-CN/cli/dashboard.md)
-- `research/openclaw/src/commands/dashboard.ts:83-139`
+- [官方入门指南（本地英文）](../official/openclaw/docs/start/getting-started.md)
+- [官方 dashboard 命令文档（本地英文）](../official/openclaw/docs/cli/dashboard.md)
+- [官方 dashboard 命令文档（本地中文）](../official/openclaw/docs/zh-CN/cli/dashboard.md)
+- `sources/official/openclaw/src/commands/dashboard.ts:83-139`
 
 ## 6. Gateway 默认本地地址仍然是 `127.0.0.1:18789`
 
@@ -101,11 +101,11 @@
 
 依据：
 
-- [官方架构文档（本地英文）](../research/openclaw/docs/concepts/architecture.md)
-- [官方入门指南（本地英文）](../research/openclaw/docs/start/getting-started.md)
-- `research/openclaw/src/commands/dashboard.ts:89-109`
-- `research/openclaw/src/gateway/server.impl.ts:265-267`
-- `research/openclaw/src/gateway/client.ts:112`
+- [官方架构文档（本地英文）](../official/openclaw/docs/concepts/architecture.md)
+- [官方入门指南（本地英文）](../official/openclaw/docs/start/getting-started.md)
+- `sources/official/openclaw/src/commands/dashboard.ts:89-109`
+- `sources/official/openclaw/src/gateway/server.impl.ts:265-267`
+- `sources/official/openclaw/src/gateway/client.ts:112`
 - [官网架构页](https://docs.openclaw.ai/concepts/architecture)
 
 ## 7. 架构上是“一个长期运行的 Gateway + WebSocket 控制面”
@@ -118,8 +118,8 @@
 
 依据：
 
-- [官方架构文档（本地英文）](../research/openclaw/docs/concepts/architecture.md)
-- [官方架构文档（本地中文）](../research/openclaw/docs/zh-CN/concepts/architecture.md)
+- [官方架构文档（本地英文）](../official/openclaw/docs/concepts/architecture.md)
+- [官方架构文档（本地中文）](../official/openclaw/docs/zh-CN/concepts/architecture.md)
 - [官网架构页](https://docs.openclaw.ai/concepts/architecture)
 
 ## 8. 当前嵌入式 Agent 主链路可以在源码里直接验证
@@ -131,11 +131,11 @@
 
 依据：
 
-- `research/openclaw/src/commands/agent.ts:1033-1063`
-- `research/openclaw/src/agents/pi-embedded-runner/run.ts:253-325`
-- `research/openclaw/src/agents/pi-embedded-runner/run/attempt.ts:1173-1189`
-- `research/openclaw/src/agents/pi-embedded-runner/run/attempt.ts:1505-1529`
-- `research/openclaw/src/gateway/server-methods/agent-job.ts:144-195`
+- `sources/official/openclaw/src/commands/agent.ts:1033-1063`
+- `sources/official/openclaw/src/agents/pi-embedded-runner/run.ts:253-325`
+- `sources/official/openclaw/src/agents/pi-embedded-runner/run/attempt.ts:1173-1189`
+- `sources/official/openclaw/src/agents/pi-embedded-runner/run/attempt.ts:1505-1529`
+- `sources/official/openclaw/src/gateway/server-methods/agent-job.ts:144-195`
 
 说明：
 
@@ -151,8 +151,8 @@
 
 依据：
 
-- `research/openclaw/src/agents/pi-tools.ts:197-255`
-- `research/openclaw/src/agents/pi-tools.before-tool-call.ts:150-193`
+- `sources/official/openclaw/src/agents/pi-tools.ts:197-255`
+- `sources/official/openclaw/src/agents/pi-tools.before-tool-call.ts:150-193`
 
 ## 10. 文档冲突时的优先级
 
@@ -178,3 +178,4 @@
 - [Windows (WSL2)](https://docs.openclaw.ai/platforms/windows)
 - [Architecture](https://docs.openclaw.ai/concepts/architecture)
 - [CLI Reference](https://docs.openclaw.ai/cli)
+

@@ -500,7 +500,7 @@ pwd
 - 只在 Ubuntu 里安装和运行 OpenClaw
 - Windows 主要负责打开浏览器、看文件、访问图形界面
 
-### 5.7.5 如果我想用 Windows 资源管理器查看这些文件怎么办
+### 5.7.6 如果我想用 Windows 资源管理器查看这些文件怎么办
 
 完全可以，而且这是 WSL2 很实用的一点。
 
@@ -560,7 +560,7 @@ wsl --shutdown
 - `\\wsl$` 是最不依赖互操作细节的主方法
 - `explorer.exe .` 和 `powershell.exe /c start .` 是互操作正常时的快捷方式
 
-### 5.7.6 小结：这一节你应该怎么记
+### 5.7.7 小结：这一节你应该怎么记
 
 这一节你只需要记住下面这套最小原则：
 
@@ -2222,10 +2222,10 @@ SSH 隧道、Tailscale、反向代理都留到后面。
 
 ## 本章核验依据（官方文档 / 源码）
 
-- `research/openclaw/docs/zh-CN/platforms/windows.md`
-- `research/openclaw/docs/zh-CN/start/getting-started.md`
-- `research/openclaw/docs/zh-CN/install/index.md`
-- `research/openclaw/package.json`
+- `../sources/official/openclaw/docs/zh-CN/platforms/windows.md`
+- `../sources/official/openclaw/docs/zh-CN/start/getting-started.md`
+- `../sources/official/openclaw/docs/zh-CN/install/index.md`
+- `../sources/official/openclaw/package.json`
 - Microsoft Learn: [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 - Microsoft Learn: [Working across Windows and Linux file systems](https://learn.microsoft.com/en-us/windows/wsl/filesystems)
 
@@ -2241,3 +2241,4 @@ SSH 隧道、Tailscale、反向代理都留到后面。
 - `openclaw_user_guide.md`
 - `openclaw_webui_setup_guide.md`
 - `openclaw_newbie_best_practice.md`
+

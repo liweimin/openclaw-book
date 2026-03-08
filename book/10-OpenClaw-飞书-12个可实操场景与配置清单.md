@@ -13,7 +13,7 @@
 
 ## 2. 结论先说
 
-基于 OpenClaw 官方飞书文档、官方在线文档，以及当前仓库里的 `research/openclaw/extensions/feishu` 插件源码，当前最值得写进书里的飞书实操场景，至少有下面 12 个：
+基于 OpenClaw 官方飞书文档、官方在线文档，以及当前仓库里的 `../sources/official/openclaw/extensions/feishu` 插件源码，当前最值得写进书里的飞书实操场景，至少有下面 12 个：
 
 1. 飞书私聊里的个人 AI 助手
 2. 飞书私聊里读取本地工作区并输出日报/摘要
@@ -862,21 +862,22 @@ OpenClaw 当前飞书插件不只是收消息，它还带有 `feishu_doc` 能力
 
 ### 当前仓库中的官方源码与文档镜像
 
-- `research/openclaw/docs/zh-CN/channels/feishu.md`
-- `research/openclaw/docs/zh-CN/channels/groups.md`
-- `research/openclaw/docs/zh-CN/automation/hooks.md`
-- `research/openclaw/docs/zh-CN/concepts/memory.md`
-- `research/openclaw/extensions/feishu/src/config-schema.ts`
-- `research/openclaw/extensions/feishu/src/tools-config.ts`
-- `research/openclaw/extensions/feishu/skills/feishu-doc/SKILL.md`
-- `research/openclaw/extensions/feishu/skills/feishu-drive/SKILL.md`
-- `research/openclaw/extensions/feishu/skills/feishu-wiki/SKILL.md`
-- `research/openclaw/extensions/feishu/skills/feishu-perm/SKILL.md`
-- `research/openclaw/extensions/feishu/src/bitable.ts`
-- `research/openclaw/extensions/feishu/src/dynamic-agent.ts`
+- `../sources/official/openclaw/docs/zh-CN/channels/feishu.md`
+- `../sources/official/openclaw/docs/zh-CN/channels/groups.md`
+- `../sources/official/openclaw/docs/zh-CN/automation/hooks.md`
+- `../sources/official/openclaw/docs/zh-CN/concepts/memory.md`
+- `../sources/official/openclaw/extensions/feishu/src/config-schema.ts`
+- `../sources/official/openclaw/extensions/feishu/src/tools-config.ts`
+- `../sources/official/openclaw/extensions/feishu/skills/feishu-doc/SKILL.md`
+- `../sources/official/openclaw/extensions/feishu/skills/feishu-drive/SKILL.md`
+- `../sources/official/openclaw/extensions/feishu/skills/feishu-wiki/SKILL.md`
+- `../sources/official/openclaw/extensions/feishu/skills/feishu-perm/SKILL.md`
+- `../sources/official/openclaw/extensions/feishu/src/bitable.ts`
+- `../sources/official/openclaw/extensions/feishu/src/dynamic-agent.ts`
 
 ## 9. 一句话总结
 
 如果只用一句话概括这一章，那就是：
 
 > OpenClaw 接入飞书之后，不只是“在飞书里聊天”，而是可以通过飞书把本地工作区、长期记忆、飞书文档、Wiki、云盘、多维表格和权限分发串成一条真正可落地的工作流。
+

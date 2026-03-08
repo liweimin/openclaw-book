@@ -221,11 +221,12 @@ openclaw logs
 
 ## 核验依据
 
-- 官方安装器文档：`research/openclaw/docs/install/installer.md`
-- 官方入门文档：`research/openclaw/docs/zh-CN/start/getting-started.md`
-- 官方 Windows 文档：`research/openclaw/docs/platforms/windows.md`
-- 安装脚本：`research/openclaw/scripts/install.ps1`
+- 官方安装器文档：`sources/official/openclaw/docs/install/installer.md`
+- 官方入门文档：`sources/official/openclaw/docs/zh-CN/start/getting-started.md`
+- 官方 Windows 文档：`sources/official/openclaw/docs/platforms/windows.md`
+- 安装脚本：`sources/official/openclaw/scripts/install.ps1`
 - 源码与配置：
-  - `research/openclaw/package.json`
-  - `research/openclaw/src/commands/dashboard.ts`
-  - `research/openclaw/src/gateway/server.impl.ts`
+  - `sources/official/openclaw/package.json`
+  - `sources/official/openclaw/src/commands/dashboard.ts`
+  - `sources/official/openclaw/src/gateway/server.impl.ts`
+

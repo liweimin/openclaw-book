@@ -125,11 +125,11 @@ Memory 是长期记忆层。
 
 下一步重点看：
 
-- `research/openclaw/src/commands/agent.ts`
-- `research/openclaw/src/agents/pi-embedded-runner/run.ts`
-- `research/openclaw/src/agents/pi-embedded-runner/run/attempt.ts`
-- `research/openclaw/src/agents/pi-tools.ts`
-- `research/openclaw/src/gateway/server-methods/agent-job.ts`
+- `sources/official/openclaw/src/commands/agent.ts`
+- `sources/official/openclaw/src/agents/pi-embedded-runner/run.ts`
+- `sources/official/openclaw/src/agents/pi-embedded-runner/run/attempt.ts`
+- `sources/official/openclaw/src/agents/pi-tools.ts`
+- `sources/official/openclaw/src/gateway/server-methods/agent-job.ts`
 
 ## 6. 根目录原文档现在该怎么用
 
@@ -168,10 +168,10 @@ Memory 是长期记忆层。
 
 ## 9. 继续深入时，建议看的官方资料
 
-- 官方源码仓库：`research/openclaw`
-- 官方文档入口：`research/openclaw/docs/zh-CN`
-- 更细核验清单：`docs-curated/VERIFIED-FACTS.md`
-- 原文档地图：`docs-curated/ORIGINAL-DOC-MAP.md`
+- 官方源码仓库：`sources/official/openclaw`
+- 官方文档入口：`sources/official/openclaw/docs/zh-CN`
+- 更细核验清单：`sources/docs-curated/VERIFIED-FACTS.md`
+- 原文档地图：`sources/docs-curated/ORIGINAL-DOC-MAP.md`
 
 ## 这套合并包的边界
 
@@ -184,12 +184,13 @@ Memory 是长期记忆层。
 
 ## 核验依据
 
-- 官方架构文档：`research/openclaw/docs/concepts/architecture.md`
-- 官方中文概念文档：`research/openclaw/docs/zh-CN/concepts/architecture.md`
+- 官方架构文档：`sources/official/openclaw/docs/concepts/architecture.md`
+- 官方中文概念文档：`sources/official/openclaw/docs/zh-CN/concepts/architecture.md`
 - 当前源码链路位置：
-  - `research/openclaw/src/commands/agent.ts`
-  - `research/openclaw/src/agents/pi-embedded-runner/run.ts`
-  - `research/openclaw/src/agents/pi-embedded-runner/run/attempt.ts`
-  - `research/openclaw/src/agents/pi-tools.ts`
-  - `research/openclaw/src/agents/pi-tools.before-tool-call.ts`
-  - `research/openclaw/src/gateway/server-methods/agent-job.ts`
+  - `sources/official/openclaw/src/commands/agent.ts`
+  - `sources/official/openclaw/src/agents/pi-embedded-runner/run.ts`
+  - `sources/official/openclaw/src/agents/pi-embedded-runner/run/attempt.ts`
+  - `sources/official/openclaw/src/agents/pi-tools.ts`
+  - `sources/official/openclaw/src/agents/pi-tools.before-tool-call.ts`
+  - `sources/official/openclaw/src/gateway/server-methods/agent-job.ts`
+

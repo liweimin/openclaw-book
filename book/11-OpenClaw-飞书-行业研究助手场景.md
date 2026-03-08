@@ -201,7 +201,7 @@ openclaw skills list
 
 我已经在当前目录下给了一个最小示例 Skill：
 
-- [industry-research-assistant-skill/SKILL.md](D:/00容器/openclaw/industry-research-assistant-skill/SKILL.md)
+- [skill/SKILL.md](D:/00容器/openclaw/book-lab/industry-research-assistant/skill/SKILL.md)
 
 这个 Skill 的作用不是“代替模型思考”，而是强制流程：
 
@@ -212,7 +212,7 @@ openclaw skills list
 
 配套说明见：
 
-- [industry-research-assistant-skill/references/检索与配置说明.md](D:/00容器/openclaw/industry-research-assistant-skill/references/检索与配置说明.md)
+- [skill/references/检索与配置说明.md](D:/00容器/openclaw/book-lab/industry-research-assistant/skill/references/检索与配置说明.md)
 
 ## 7. 怎么把这个 Skill 用起来
 
@@ -371,3 +371,4 @@ openclaw cron add ^
 5. 第一版人工确认通过后，再补 cron
 
 这样最稳，也最适合写书。
+

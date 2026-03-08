@@ -1062,9 +1062,9 @@ openclaw health
 
 ## 本章核验依据（官方文档 / 源码）
 
-- `research/openclaw/docs/zh-CN/cli/index.md`
-- `research/openclaw/docs/zh-CN/web/dashboard.md`
-- `research/openclaw/docs/zh-CN/platforms/windows.md`
+- `../sources/official/openclaw/docs/zh-CN/cli/index.md`
+- `../sources/official/openclaw/docs/zh-CN/web/dashboard.md`
+- `../sources/official/openclaw/docs/zh-CN/platforms/windows.md`
 - Microsoft Learn: [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 - Microsoft Learn: [Working across Windows and Linux file systems](https://learn.microsoft.com/en-us/windows/wsl/filesystems)
 - Microsoft Learn: [Accessing network applications with WSL](https://learn.microsoft.com/en-us/windows/wsl/networking)
@@ -1081,3 +1081,4 @@ openclaw health
 - `openclaw_newbie_best_practice.md`
 - `openclaw_newbie_best_practice_practical.md`
 - `openclaw_dual_env_guide.md`
+

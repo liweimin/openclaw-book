@@ -4,17 +4,17 @@
 
 说明：
 
-- 现在根目录已经有一套更完整的合并主文档。
+- 现在 `book/` 里已经有一套更完整的主书稿。
 - 这里保留的是更短、更轻的压缩版。
-- 如果你想要“更完整但仍然不乱”的版本，先看根目录 `README.md`。
+- 如果你想要“更完整但仍然不乱”的版本，先看 `../../README.md` 和 `../../book/`。
 
-你可以把根目录理解成“原始材料区”，把这里理解成“整理后的学习区”。
+你可以把 `book/` 理解成“正式主书稿”，把这里理解成“压缩学习区”。
 
 特点：
 
 - 只保留少量核心文档。
 - 优先使用官方官网和官方源码已经核验过的信息。
-- 原始文档一份都没删，仍然都在根目录。
+- 原始文档一份都没删，仍然保留在 `../docs-archive-root/`。
 
 ## 阅读顺序
 
@@ -44,6 +44,6 @@
 
 ## 相关位置
 
-- 官方源码快照：[../research/openclaw](../research/openclaw)
+- 官方源码快照：[../official/openclaw](../official/openclaw)
 - 更细的核验清单：[../docs-curated/VERIFIED-FACTS.md](../docs-curated/VERIFIED-FACTS.md)
 - 原文档整理地图：[../docs-curated/ORIGINAL-DOC-MAP.md](../docs-curated/ORIGINAL-DOC-MAP.md)

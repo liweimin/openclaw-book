@@ -440,11 +440,11 @@ openclaw gateway restart
 
 ## 本章核验依据（官方文档 / 源码）
 
-- `research/openclaw/docs/zh-CN/cli/index.md`
-- `research/openclaw/docs/zh-CN/channels/pairing.md`
-- `research/openclaw/docs/zh-CN/channels/groups.md`
-- `research/openclaw/docs/zh-CN/tools/exec.md`
-- `research/openclaw/docs/zh-CN/gateway/security/index.md`
+- `../sources/official/openclaw/docs/zh-CN/cli/index.md`
+- `../sources/official/openclaw/docs/zh-CN/channels/pairing.md`
+- `../sources/official/openclaw/docs/zh-CN/channels/groups.md`
+- `../sources/official/openclaw/docs/zh-CN/tools/exec.md`
+- `../sources/official/openclaw/docs/zh-CN/gateway/security/index.md`
 
 ## 本章合并来源
 
@@ -457,3 +457,4 @@ openclaw gateway restart
 - `openclaw_dual_env_guide.md`
 - `openclaw_playbook.md`
 - `openclaw_showcase_report_2026-03-05.md`
+
