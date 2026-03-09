@@ -41,8 +41,10 @@
 
 - [industry-research-assistant/README.md](industry-research-assistant/README.md)
 
-这条线现在还是较早期的实验：
+这条线现在已经有了第一条明确主线：
 
 - 已有最小 Skill
 - 已有检索与配置说明
-- 后面还会继续补蓝图、验证手册和测试记录
+- 已补第一版蓝图与验证手册：
+  - 通用行业研究助手
+- 后面还会继续补测试记录、配置历史和 cron 设计

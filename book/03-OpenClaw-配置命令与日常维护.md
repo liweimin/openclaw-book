@@ -7,6 +7,7 @@
 - 配置文件在哪里
 - 配置应该怎么改
 - 最常用命令有哪些
+- 正式版平时怎么更新，去哪里看这次更新了什么
 - Windows + WSL2 用户每天到底该怎么用
 - 出问题时先看什么
 - 日常使用怎样逐步从“能用”变成“稳定”
@@ -22,8 +23,9 @@
 1. 找到 `~/.openclaw/openclaw.json`
 2. 建好一个固定工作区习惯
 3. 看懂自己现在到底要不要改 `tools.profile`
-4. 产出一份你自己的 `WORKSPACE-GUIDE.md`
-5. 改完后验证系统没有被你改坏
+4. 知道正式版平时该怎么更新
+5. 知道去哪里看 release 和 changelog
+6. 改完后验证系统没有被你改坏
 
 ### 1.2 本章产物
 
@@ -958,9 +960,33 @@ pwd
 3. 直接访问 `http://127.0.0.1:18789/` 是否可达
 4. 是否其实是认证问题而不是网络问题
 
-## 18. 备份、迁移和升级，应该先记住什么
+## 18. 备份、更新与迁移，应该先记住什么
 
-### 最值得备份的目录
+这一节我会把一个很容易混乱的问题讲清楚：
+
+很多新手会把“更新正式版”“看这次更新了什么”“看源码主线又提前做了什么”混成一件事。
+
+对日常使用来说，你最该先掌握的是 **正式版怎么安全更新**，而不是一上来就追 `main` 分支。
+
+### 18.1 先建立一个判断：你平时默认跟的是正式版 `stable`
+
+如果你没有刻意切换到 `beta` 或 `dev`，也没有长期在官方源码目录里自己 `git pull`，那你日常使用的主线就应该理解成：
+
+- **正式版 / stable**
+- 对应 npm 的 `latest`
+- 重点看 release 和 changelog
+
+这也是本书这一章的默认维护路线。
+
+也就是说，普通读者平时最应该关心的是：
+
+1. 怎么把 stable 安全更新上去
+2. 更新之后先做什么检查
+3. 去哪里看这次正式发布到底改了什么
+
+而不是第一时间去盯 GitHub commits 页面。
+
+### 18.2 更新前，先知道哪些东西最值得备份
 
 至少知道下面这些位置：
 
@@ -970,9 +996,52 @@ pwd
 
 如果你走的是 WSL2，请记住：这里的 `~` 是 Ubuntu 里的 home 目录。
 
-### 升级前后的习惯
+这里我要补一句非常重要的话：
 
-升级 OpenClaw 或 Node 之后，先做：
+截至 **2026-03-09**，OpenClaw 官方源码和文档里已经出现了更正式的 `openclaw backup` 方案，但你当前日常 stable 是否已经带上这条命令，要以你手里的正式版版本为准。对小白来说，现在最稳的做法仍然是先知道上面这 3 类目录在哪里。
+
+### 18.3 对大多数人来说，正式版平时怎么更新最合适
+
+如果你现在的主要目标是“稳定使用”，那本书建议你优先把更新理解成：
+
+- **跟 stable**
+- **一次只做一次正常升级**
+- **升级后先检查，不要立刻上强任务**
+
+对大多数用户，最常用的正式版更新命令可以先记这一条：
+
+```bash
+openclaw update --channel stable
+```
+
+你也可以直接：
+
+```bash
+openclaw update
+```
+
+但如果你想明确表达“我就是要留在正式发布渠道”，那 `--channel stable` 更直观。
+
+官方更新文档还推荐过一种更通用的做法：重新运行网站安装器进行原地升级。对已经熟悉安装流程的人，这也完全成立；但对本书主线读者来说，第三章更适合先记住 `openclaw update --channel stable` 这条日常命令。
+
+### 18.4 更新正式版之前，建议照着做的顺序
+
+如果你准备做一次正常升级，建议直接养成这个顺序：
+
+1. 先确认当前状态正常：
+
+```bash
+openclaw gateway status
+openclaw status
+```
+
+2. 再更新正式版：
+
+```bash
+openclaw update --channel stable
+```
+
+3. 更新后立刻做检查：
 
 ```bash
 openclaw doctor
@@ -980,7 +1049,119 @@ openclaw status
 openclaw health
 ```
 
-### 迁移到新机器时
+4. 如果你装的是后台 Gateway 服务，再补一步：
+
+```bash
+openclaw gateway restart
+```
+
+你可以把它记成一个固定模板：
+
+- 更新前先看状态
+- 更新后先跑 doctor / status / health
+- 需要时再 restart
+
+这比“更新完直接继续干活”稳得多。
+
+### 18.5 去哪里看“这次正式版更新了什么”
+
+这才是很多人真正想问的问题。
+
+对 **正式版** 来说，优先级应该是下面这个顺序：
+
+#### 第一看：`CHANGELOG.md`
+
+如果你手边有官方源码参考目录，最直接的位置就是：
+
+```text
+sources/official/openclaw/CHANGELOG.md
+```
+
+这里适合做的事情是：
+
+- 看最新 release 章节标题，例如 `2026.3.7`
+- 看 `Changes`、`Fixes`、`Breaking` 三块
+- 快速判断这次更新和你有没有关系
+
+#### 第二看：GitHub Releases
+
+正式版最适合看的网页是：
+
+- https://github.com/openclaw/openclaw/releases
+
+这里比 commits 页面更适合普通用户，因为它展示的是“已经整理过的版本变化”，而不是零碎提交流。
+
+#### 第三看：本地版本号
+
+先执行：
+
+```bash
+openclaw --version
+```
+
+你至少先知道自己现在在哪个版本上，再去看对应 release，才不会出现“我明明没更新到那个版本，却在研究那个版本的功能”的错位。
+
+### 18.6 怎么判断某个新功能是不是已经进正式版了
+
+这是小白非常容易踩的坑。
+
+正确判断顺序是：
+
+1. 先看 `openclaw --version`
+2. 再看 `CHANGELOG.md` 或 Releases 里的对应版本
+3. 最后才去看源码或 commits
+
+因为 OpenClaw 的官方文档和主线源码，很多时候会比你手里的 stable 稍微走在前面。
+
+举一个你这次就已经遇到的真实情况：
+
+- 截至 **2026-03-09**，本地官方源码仓库最近的正式发布 tag 仍是 **`v2026.3.7`**
+- 但主分支源码已经进入 **`2026.3.8`** 周期
+- 也就是说，你在源码和文档里看到的新内容，不一定已经全部进入你手里的正式版
+
+所以日常维护时，最重要的不是“看到新功能就兴奋”，而是先分清：
+
+- 这是 **正式版已发布** 的内容
+- 还是 **源码主线已出现但尚未正式发版** 的内容
+
+### 18.7 如果你只想稳定使用，不要先拿 commits 页面当主入口
+
+GitHub commits 页面当然有价值，但它更适合：
+
+- 写书
+- 跟踪源码
+- 研究功能还没发版之前的变化
+- 判断某个 bug 是否刚被修
+
+对普通用户日常维护来说，它不是第一入口。
+
+如果你只是想知道“这次正式升级以后我应该关心什么”，优先看：
+
+1. `openclaw --version`
+2. `CHANGELOG.md`
+3. GitHub Releases
+
+源码提交记录最多只需要作为补充。
+
+### 18.8 什么时候才需要顺手提一下源码主线
+
+如果你正在做下面这些事，就可以稍微看一眼源码主线：
+
+- 写书
+- 做教程
+- 提前关注下一个版本可能会带来什么
+- 想确认某个问题是不是刚在 `main` 里被修
+
+这时再进入官方源码目录看：
+
+```bash
+git describe --tags --abbrev=0
+git log -n 10 --oneline
+```
+
+但请记住，这一层在第三章只是补充说明，不是普通用户的主维护路线。
+
+### 18.9 迁移到新机器时
 
 只要你已经理解了 `.openclaw/` 和工作区的关系，迁移就不会再像“黑箱搬家”。你搬的是：
 
@@ -1053,6 +1234,7 @@ openclaw health
 - 看过自己的 `openclaw.json`
 - 跑过 `openclaw gateway status`
 - 跑过 `openclaw doctor`
+- 知道正式版平时怎么更新，以及去哪里看 release / changelog
 - 知道改配置后先验证，而不是盲改很多项
 - 工作区里已经有一份 `ch03-stable/WORKSPACE-GUIDE.md`
 
@@ -1065,6 +1247,9 @@ openclaw health
 - `../sources/official/openclaw/docs/zh-CN/cli/index.md`
 - `../sources/official/openclaw/docs/zh-CN/web/dashboard.md`
 - `../sources/official/openclaw/docs/zh-CN/platforms/windows.md`
+- `../sources/official/openclaw/docs/zh-CN/install/updating.md`
+- `../sources/official/openclaw/docs/zh-CN/install/development-channels.md`
+- `../sources/official/openclaw/CHANGELOG.md`
 - Microsoft Learn: [Install WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 - Microsoft Learn: [Working across Windows and Linux file systems](https://learn.microsoft.com/en-us/windows/wsl/filesystems)
 - Microsoft Learn: [Accessing network applications with WSL](https://learn.microsoft.com/en-us/windows/wsl/networking)
