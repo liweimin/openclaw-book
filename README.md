@@ -130,13 +130,18 @@
 - [book/01-OpenClaw-总览与学习路线.md](book/01-OpenClaw-总览与学习路线.md)
 - [book/02-OpenClaw-安装部署与首次跑通.md](book/02-OpenClaw-安装部署与首次跑通.md)
 - [book/03-OpenClaw-配置命令与日常维护.md](book/03-OpenClaw-配置命令与日常维护.md)
+- [book/11-OpenClaw-多Agent实战.md](book/11-OpenClaw-多Agent实战.md)
+- [book/12-OpenClaw-工具与Skill实战.md](book/12-OpenClaw-工具与Skill实战.md)
 
 ### 实验案例
 
+- [book-lab/main-agent-growth/README.md](book-lab/main-agent-growth/README.md)
+- [book-lab/personal-ceo/README.md](book-lab/personal-ceo/README.md)
 - [book-lab/weekly-assistant/README.md](book-lab/weekly-assistant/README.md)
 - [book-lab/industry-research-assistant/README.md](book-lab/industry-research-assistant/README.md)
+- [book-lab/finance-assistant/README.md](book-lab/finance-assistant/README.md)
 
 ### 关键专题
 
-- [book/15-OpenClaw-记忆与检索-从工作区文件到QMD.md](book/15-OpenClaw-记忆与检索-从工作区文件到QMD.md)
-- [book/16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md](book/16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md)
+- [book/13-OpenClaw-记忆与检索.md](book/13-OpenClaw-记忆与检索.md)
+- [book/14-OpenClaw-工作区根文件指南.md](book/14-OpenClaw-工作区根文件指南.md)

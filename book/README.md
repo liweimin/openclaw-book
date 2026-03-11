@@ -20,18 +20,27 @@
 
 ## 3. 场景深化
 
-- [10-OpenClaw-飞书-12个可实操场景与配置清单.md](10-OpenClaw-飞书-12个可实操场景与配置清单.md)
-- [11-OpenClaw-飞书-行业研究助手场景.md](11-OpenClaw-飞书-行业研究助手场景.md)
+- [08-OpenClaw-飞书-12个场景.md](08-OpenClaw-飞书-12个场景.md)
+- [09-OpenClaw-行业研究助手.md](09-OpenClaw-行业研究助手.md)
+- [10-OpenClaw-搜索工具与技能.md](10-OpenClaw-搜索工具与技能.md)
 
-## 4. 关键机制专题
+## 4. 定制与扩展
 
-- [15-OpenClaw-记忆与检索-从工作区文件到QMD.md](15-OpenClaw-记忆与检索-从工作区文件到QMD.md)
-- [16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md](16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md)
+- [11-OpenClaw-多Agent实战.md](11-OpenClaw-多Agent实战.md)
+- [12-OpenClaw-工具与Skill实战.md](12-OpenClaw-工具与Skill实战.md)
+
+## 5. 关键机制专题
+
+- [13-OpenClaw-记忆与检索.md](13-OpenClaw-记忆与检索.md)
+- [13A-OpenClaw-多智能体知识共享与归档.md](13A-OpenClaw-多智能体知识共享与归档.md)
+- [14-OpenClaw-工作区根文件指南.md](14-OpenClaw-工作区根文件指南.md)
+- [15-OpenClaw-提示词与上下文.md](15-OpenClaw-提示词与上下文.md)
+- [16-OpenClaw-会话与定时机制.md](16-OpenClaw-会话与定时机制.md)
 
 ## 附录
 
-- [08-原文档归档与章节映射.md](08-原文档归档与章节映射.md)
-- [09-术语表与核验说明.md](09-术语表与核验说明.md)
+- [17-附录-原文档归档.md](17-附录-原文档归档.md)
+- [18-附录-术语表.md](18-附录-术语表.md)
 
 ## 当前仍在制作中
 
@@ -39,7 +48,7 @@
 
 当前特征是：
 
-- 主结构已经成形
+- 主结构已经基本成形，核心主编号已经稳定
 - 专题章开始独立出来
 - 完整实验案例还在 `../book-lab/` 继续验证
 

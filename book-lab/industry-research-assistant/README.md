@@ -20,6 +20,8 @@
 - [02-通用行业研究助手-验证手册.md](02-通用行业研究助手-验证手册.md)
 - [03-搜索能力测评实验蓝图.md](03-搜索能力测评实验蓝图.md)
 - [04-搜索能力测评执行手册.md](04-搜索能力测评执行手册.md)
+- [05-搜索能力测评记录模板.md](05-搜索能力测评记录模板.md)
+- [diagnose-search-stack.ps1](diagnose-search-stack.ps1)
 - [skill/SKILL.md](skill/SKILL.md)
 - [skill/references/检索与配置说明.md](skill/references/检索与配置说明.md)
 
@@ -32,8 +34,10 @@
 3. 如果你想先把搜索栈搞清楚，再看：
    - [03-搜索能力测评实验蓝图.md](03-搜索能力测评实验蓝图.md)
    - [04-搜索能力测评执行手册.md](04-搜索能力测评执行手册.md)
-4. 做到需要补规则时，再回看 [skill/SKILL.md](skill/SKILL.md)
-5. 做到需要补配置时，再看 [skill/references/检索与配置说明.md](skill/references/检索与配置说明.md)
+4. 如果 smoke test 过不去，先跑 [diagnose-search-stack.ps1](diagnose-search-stack.ps1)
+5. 每跑完一组就按 [05-搜索能力测评记录模板.md](05-搜索能力测评记录模板.md) 记证据
+6. 做到需要补规则时，再回看 [skill/SKILL.md](skill/SKILL.md)
+7. 做到需要补配置时，再看 [skill/references/检索与配置说明.md](skill/references/检索与配置说明.md)
 
 后面这条线还会继续补成：
 

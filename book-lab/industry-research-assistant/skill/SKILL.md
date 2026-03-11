@@ -81,8 +81,38 @@ metadata: {"openclaw":{"requires":{"config":["browser.enabled"]}}}
 3. 再用行业媒体
 4. 最后才是综合商业媒体
 
+默认工具顺序：
+
+1. 先用内置 `web_search`
+2. 再用内置 `web_fetch`
+3. 页面明显依赖交互、分页、登录态或动态渲染时，再用内置 `browser`
+
+如果内置链路被环境卡住，不要反复空转。遇到下面情况时，直接切到独立 skill 兜底：
+
+- `web_fetch` 报 `Blocked: resolves to private/internal/special-use IP address`
+- 域名被 Clash TUN / fake-ip 解析到 `198.18.x.x`
+- `browser` 起不来，或者 Chrome CDP 端口打不通
+
+兜底顺序固定成这样：
+
+1. 搜索层优先用 Tavily Search
+2. 抽取层优先用 Firecrawl
+3. 长文压缩或批量摘要优先用 Summarize
+4. 需要真实浏览器操作时再用 agent browser
+
+如果这些兜底 skill 还没有安装，就明确告诉用户当前是环境问题，不要把失败伪装成“没有搜到”。
+
 如果来源可靠性不足，要明确标出来。  
 如果只拿到二手转述，不要把它写成确定事实。
+
+每轮研究都要保留最小证据：
+
+- 实际搜过的关键词
+- 实际打开过的链接或域名
+- 实际使用过的工具
+- 关键报错原文
+
+不要只回结论，不要省略“你到底搜到了什么”。
 
 ## 输出结构
 
@@ -102,6 +132,12 @@ metadata: {"openclaw":{"requires":{"config":["browser.enabled"]}}}
 2. 与上期相比的新变化
 3. 重点来源与链接
 4. 下期值得继续跟踪的问题
+
+如果本轮出现检索失败或切换兜底链路，再额外补一段“执行说明”，写清：
+
+1. 内置链路卡在哪一步
+2. 后来改用了什么 skill
+3. 哪些结论来自真实来源，哪些只是待确认线索
 
 ## 记忆规则
 

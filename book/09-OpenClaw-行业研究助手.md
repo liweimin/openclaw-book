@@ -75,6 +75,10 @@
 > Skill 解决的是流程约束，不是全部执行能力。  
 > 真正把行业研究跑起来，还需要飞书渠道、browser 检索能力、memory 和记忆检索、以及 cron 定时能力配合。
 
+如果你想把这些搜索与取证能力的分工一次看清楚，建议接着读：
+
+- [12-OpenClaw-搜索工具与技能-从web_search到ClawHub.md](/D:/00容器/openclaw/book/12-OpenClaw-搜索工具与技能-从web_search到ClawHub.md)
+
 ## 4. 建议的交互流程
 
 ## 第一步：用户在飞书里提出模糊需求
@@ -371,4 +375,5 @@ openclaw cron add ^
 5. 第一版人工确认通过后，再补 cron
 
 这样最稳，也最适合写书。
+
 

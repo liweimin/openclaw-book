@@ -1238,9 +1238,22 @@ git log -n 10 --oneline
 - 知道改配置后先验证，而不是盲改很多项
 - 工作区里已经有一份 `ch03-stable/WORKSPACE-GUIDE.md`
 
+### 21.2 如果你后面卡在这些问题，优先回看哪一章
+
+- 不知道 `openclaw.json` 之外，工作区根目录那几份文件到底该怎么分工：
+  - [16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md](/D:/00容器/openclaw/book/16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md)
+- 不清楚为什么改了根文件、技能、工具之后，token 和上下文成本会变化：
+  - [17-OpenClaw-系统提示词与上下文注入-模型到底看到了什么.md](/D:/00容器/openclaw/book/17-OpenClaw-系统提示词与上下文注入-模型到底看到了什么.md)
+- 不明白 `dmScope`、`main`、`isolated`、`cron`、`heartbeat` 对自己后面做个人助手或研究助手到底有什么影响：
+  - [18-OpenClaw-会话与定时机制-dmScope-main-isolated-cron-heartbeat.md](/D:/00容器/openclaw/book/18-OpenClaw-会话与定时机制-dmScope-main-isolated-cron-heartbeat.md)
+
 ## 22. 下一章
 
 - [04-OpenClaw-Channels-Feishu-多入口接入实战.md](04-OpenClaw-Channels-Feishu-多入口接入实战.md)
+
+> [!NOTE]
+> 本章内容基于 OpenClaw 当前版本验证（截至 2026 年 3 月）。
+> 如果你使用更新版本，关键命令和配置项请以官方源码为准。
 
 ## 本章核验依据（官方文档 / 源码）
 
@@ -1266,4 +1279,5 @@ git log -n 10 --oneline
 - `openclaw_newbie_best_practice.md`
 - `openclaw_newbie_best_practice_practical.md`
 - `openclaw_dual_env_guide.md`
+
 

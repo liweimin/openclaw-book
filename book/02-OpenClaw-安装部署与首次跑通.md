@@ -2216,9 +2216,22 @@ SSH 隧道、Tailscale、反向代理都留到后面。
 4. 你已经在 Dashboard 里完成过至少一次真实对话
 5. 工作区里已经生成 `ch02-first-run/first-plan.md`
 
+### 16.2 如果你后面卡在这些问题，优先回看哪一章
+
+- 安装已经成功，但不明白 `AGENTS.md`、`MEMORY.md`、`HEARTBEAT.md` 这些根文件后来会起什么作用：
+  - [16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md](/D:/00容器/openclaw/book/16-OpenClaw-工作区根文件-AGENTS-SOUL-USER-IDENTITY-TOOLS-HEARTBEAT-BOOTSTRAP-MEMORY.md)
+- 明明 `/new` 了，为什么它还像“知道之前的事”；或者为什么根文件一大就明显变慢：
+  - [17-OpenClaw-系统提示词与上下文注入-模型到底看到了什么.md](/D:/00容器/openclaw/book/17-OpenClaw-系统提示词与上下文注入-模型到底看到了什么.md)
+- 为什么关了 Ubuntu 窗口、重开会话、或者以后接飞书后，感觉“会话”不像自己想的那样工作：
+  - [18-OpenClaw-会话与定时机制-dmScope-main-isolated-cron-heartbeat.md](/D:/00容器/openclaw/book/18-OpenClaw-会话与定时机制-dmScope-main-isolated-cron-heartbeat.md)
+
 ## 17. 下一章
 
 - [03-OpenClaw-配置命令与日常维护.md](03-OpenClaw-配置命令与日常维护.md)
+
+> [!NOTE]
+> 本章内容基于 OpenClaw 当前版本验证（截至 2026 年 3 月）。
+> 如果你使用更新版本，关键命令和配置项请以官方源码为准。
 
 ## 本章核验依据（官方文档 / 源码）
 
@@ -2241,4 +2254,5 @@ SSH 隧道、Tailscale、反向代理都留到后面。
 - `openclaw_user_guide.md`
 - `openclaw_webui_setup_guide.md`
 - `openclaw_newbie_best_practice.md`
+
 

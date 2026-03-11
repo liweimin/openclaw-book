@@ -17,8 +17,8 @@ OpenClaw 文档现在分成三层：
 - `05-OpenClaw-Tools-Skills-Memory-能力体系.md`
 - `06-OpenClaw-Channels-Feishu-多入口接入实战.md`
 - `07-OpenClaw-调试安全最佳实践与典型场景.md`
-- `08-原文档归档与章节映射.md`
-- `09-术语表与核验说明.md`
+- `19-原文档归档与章节映射.md`
+- `20-术语表与核验说明.md`
 
 ### 第 2 层：二级整理层
 
@@ -110,3 +110,4 @@ OpenClaw 文档现在分成三层：
 - 想系统学：回根目录主文档
 - 想按旧主题回查：去归档目录
 - 想核验结论：看 `VERIFIED-FACTS.md`
+

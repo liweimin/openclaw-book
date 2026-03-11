@@ -27,3 +27,8 @@ node_modules/
 
 # External source repo: managed independently
 sources/official/openclaw/
+
+# Local external repos / scratch artifacts
+pskoett-ai-skills/
+scratch/test_write.txt
+
